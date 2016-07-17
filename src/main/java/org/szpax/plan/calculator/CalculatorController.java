@@ -4,22 +4,26 @@ import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.szpax.plan.treningowy.model.Excercise;
 
-@RestController("/calculator")
+@RestController
+@RequestMapping("/calculator")
 public class CalculatorController {
 
     Logger log = Logger.getLogger(CalculatorController.class);
 
-    private static Double CALORIES_CONSTANT = 4.1868;
-    private static Double SHIFT = 0.7;
-    private static Double ACCELERATION_MOD = 1D;
-
-
-    @RequestMapping
-    public Double caloriesTotal(@RequestParam Integer repeats, @RequestParam Integer weight) {
-        log.info("Weight param: " + weight);
+    /**
+     * oblicza ilosc spalonych kalorii podczas cwiczen, wg wzoru
+     * @param repeats
+     * @param weight
+     * @return spalone kalorie
+     */
+    @RequestMapping //http://localhost:8080/calculator?weight=30&repeats=10 - nadawanie parametrów w przegladarce
+    public Double caloriesTotal(@RequestParam Integer repeats, @RequestParam Integer weight) { //@RequestParam Integer repeats mówi że ten repeats który jest w URL ma być przekazany jako argument ( repeats) do wywołania metody; w tym momencie nei ważna jest kolejność podawania argumentów URL
+        log.info("Weight param: " + weight); //log.info - wypisz w konsoli - zamiast printline
         log.info("Repeats param: " + repeats);
-        return (repeats * weight * SHIFT * ACCELERATION_MOD) / CALORIES_CONSTANT;
+        Excercise excercise = new Excercise("what ever", repeats, weight);
+        return excercise.calorieslocal(); // przegladarki webowe wyświetlaja zwracane wartosci bez koniecznosci podawania komendy do ich wyswietelnia
     }
 
 }

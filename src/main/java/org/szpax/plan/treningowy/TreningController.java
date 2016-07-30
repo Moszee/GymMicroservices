@@ -1,13 +1,11 @@
 package org.szpax.plan.treningowy;
 
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.szpax.plan.treningowy.model.Excercise;
-import org.szpax.plan.treningowy.model.TraningPlan;
+import org.szpax.plan.treningowy.model.TrainingPlan;
 
 import java.util.List;
 import java.util.Map;
@@ -26,7 +24,7 @@ public class TreningController {
 
     @RequestMapping // przy kazdej metodzie wstaiamy @requestMapping  potem jak nie dodamy innej koncowki to obsluguje ona zadania dalej z koncowka /plan
     public Map<String,List<Excercise>> getPlan () {
-        return TraningPlan.getTrainingByDays();
+        return TrainingPlan.getTraningPlan().getTrainingByDays();
     }
 
     /*
@@ -35,26 +33,16 @@ public class TreningController {
      */
     @RequestMapping("add")
     public void addExcercise (@RequestParam String day,@RequestParam String name,@RequestParam Integer repeats, @RequestParam Integer weight) {
-        TraningPlan.addExcercise(day, name, repeats, weight);
+        TrainingPlan.getTraningPlan().addExcercise(day, name, repeats, weight); //!!! jak przyjedziesz do domu to odpowiedz sobie na jedno zajebioście proste pytanie , do czego w tym miejscu potrzebne Ci jest getTreningPlan. a masz :P --- odp. wcześniej nie było getTrening plan, za to wszendzie powcinskane były staticy ... sam add Exercise był metodą statyczną teraz teoretycznie może istnieć wiele trening Planów(nie może bo już masz konstruktor private i static get.treningPlan) ( w związku z czym metoda add exercise nie jest przypisana do klasy a do konkretnego TreningPlanu), natomiast musisz odwołać się do niej poprzez statyczny treningPlan za pomoca get.Trening plan, BO ADD.EXERCISE MOŻESZ TERAZ UżYć (TEORETYCZNIE) NA RÓŻNYCH TRENING PLANACH WIEC JAK CHCIAłBYś to zrobić bez get.TreningPlan ( które odwołuje się do statica ) czyli bez statica to do którego z tych wielu ( teoretycznie wielu) trening planu miało by się to odnosić ... jak to pisałem to straciłem się po nawiasie ale mam nadzieje że jak to bedizesz czytał to się połapiesz :P
     }
     @RequestMapping("licz")
-    public Double calculate (){
-        return TraningPlan.caloriesTotal();
-    }
+    public Double calculate () {
+        return TrainingPlan.getTraningPlan().caloriesTotal();
 
-    @RequestMapping("caloriesByDays01")
-    public void caloriesInWeek01 () { // JAK WSTAWIE TU STATIC TO LOGI ( LOG.INFO ) MI NIE DZIALAJA _ WYRZUCA MI JE NA CZERWONO , DLACZEGO??
-        log.info(TraningPlan.PONIEDZIALEK + ": " + TraningPlan.caloriesPoniedzialek());
-        log.info(TraningPlan.WTOREK + ": " + TraningPlan.caloriesWtorek());
-        log.info(TraningPlan.SRODA + ": " + TraningPlan.caloriesSroda());
-        log.info(TraningPlan.CZWARTEK + ": " + TraningPlan.caloriesCzwartek());
-        log.info(TraningPlan.PIATEK + ": " + TraningPlan.caloriesPiatek());
-        log.info(TraningPlan.SOBOTA + ": " + TraningPlan.caloriesSobota());
-        log.info(TraningPlan.NIEDZIELA + ": " + TraningPlan.caloriesNiedziela());
     }
 
     @RequestMapping("caloriesByDays")
-    public static Map<String, Double> caloriesInWeek() {
-        return TraningPlan.getmapCaloriesByDays(); // Tu jest blad !!!!!!!! mówi że to dowoluje się do Statc a to nie jest Static
+    public Map<String, Double> caloriesInWeek() {
+        return TrainingPlan.getTraningPlan().getCaloriesByDays(); // Tu jest blad !!!!!!!! mówi że to dowoluje się do Statc a to nie jest Static
     }
 }

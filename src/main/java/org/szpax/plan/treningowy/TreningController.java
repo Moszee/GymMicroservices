@@ -4,8 +4,10 @@ import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.szpax.plan.persistance.DbMock;
 import org.szpax.plan.treningowy.model.Excercise;
 import org.szpax.plan.treningowy.model.TrainingPlan;
+import org.szpax.plan.treningowy.model.User;
 
 import java.util.List;
 import java.util.Map;
@@ -24,7 +26,7 @@ public class TreningController {
 
     @RequestMapping // przy kazdej metodzie wstaiamy @requestMapping  potem jak nie dodamy innej koncowki to obsluguje ona zadania dalej z koncowka /plan
     public Map<String,List<Excercise>> getPlan () {
-        return TrainingPlan.getTraningPlan().getTrainingByDays();
+        return DbMock.getTraningPlan().getTrainingByDays();
     }
 
     /*
@@ -33,16 +35,29 @@ public class TreningController {
      */
     @RequestMapping("add")
     public void addExcercise (@RequestParam String day,@RequestParam String name,@RequestParam Integer repeats, @RequestParam Integer weight) {
-        TrainingPlan.getTraningPlan().addExcercise(day, name, repeats, weight); //!!! jak przyjedziesz do domu to odpowiedz sobie na jedno zajebioście proste pytanie , do czego w tym miejscu potrzebne Ci jest getTreningPlan. a masz :P --- odp. wcześniej nie było getTrening plan, za to wszendzie powcinskane były staticy ... sam add Exercise był metodą statyczną teraz teoretycznie może istnieć wiele trening Planów(nie może bo już masz konstruktor private i static get.treningPlan) ( w związku z czym metoda add exercise nie jest przypisana do klasy a do konkretnego TreningPlanu), natomiast musisz odwołać się do niej poprzez statyczny treningPlan za pomoca get.Trening plan, BO ADD.EXERCISE MOŻESZ TERAZ UżYć (TEORETYCZNIE) NA RÓŻNYCH TRENING PLANACH WIEC JAK CHCIAłBYś to zrobić bez get.TreningPlan ( które odwołuje się do statica ) czyli bez statica to do którego z tych wielu ( teoretycznie wielu) trening planu miało by się to odnosić ... jak to pisałem to straciłem się po nawiasie ale mam nadzieje że jak to bedizesz czytał to się połapiesz :P
+        DbMock.getTraningPlan().addExcercise(day, name, repeats, weight); //!!! jak przyjedziesz do domu to odpowiedz sobie na jedno zajebioście proste pytanie , do czego w tym miejscu potrzebne Ci jest getTreningPlan. a masz :P --- odp. wcześniej nie było getTrening plan, za to wszendzie powcinskane były staticy ... sam add Exercise był metodą statyczną teraz teoretycznie może istnieć wiele trening Planów(nie może bo już masz konstruktor private i static get.treningPlan) ( w związku z czym metoda add exercise nie jest przypisana do klasy a do konkretnego TreningPlanu), natomiast musisz odwołać się do niej poprzez statyczny treningPlan za pomoca get.Trening plan, BO ADD.EXERCISE MOŻESZ TERAZ UżYć (TEORETYCZNIE) NA RÓŻNYCH TRENING PLANACH WIEC JAK CHCIAłBYś to zrobić bez get.TreningPlan ( które odwołuje się do statica ) czyli bez statica to do którego z tych wielu ( teoretycznie wielu) trening planu miało by się to odnosić ... jak to pisałem to straciłem się po nawiasie ale mam nadzieje że jak to bedizesz czytał to się połapiesz :P
+
+// gdzie tu jest referencja do tworzonego cwiczenia ?!?!
     }
+
     @RequestMapping("licz")
     public Double calculate () {
-        return TrainingPlan.getTraningPlan().caloriesTotal();
+        return DbMock.getTraningPlan().caloriesTotal();
 
     }
 
     @RequestMapping("caloriesByDays")
     public Map<String, Double> caloriesInWeek() {
-        return TrainingPlan.getTraningPlan().getCaloriesByDays(); // Tu jest blad !!!!!!!! mówi że to dowoluje się do Statc a to nie jest Static
+        return DbMock.getTraningPlan().getCaloriesByDays(); // Tu jest blad !!!!!!!! mówi że to dowoluje się do Statc a to nie jest Static
+    }
+
+    @RequestMapping("user/add")
+    public static void addUser (@RequestParam String name) {
+        TrainingPlan.addUser(name); // why user list też musi być static.... musze to sobie jeszcze raz przemyśleć i poukładać ( bez tego nie chula)
+    }                                  // kurka blaszka chyba chodzi , ale nie woem poco nusialemwstawiać ta metode w TrainingPlan zamist bezpośrednio zrobić to tutaj???
+
+    @RequestMapping("user/list")
+            public static List<User> userList () {
+    return DbMock.getUsersList();
     }
 }

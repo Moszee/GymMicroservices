@@ -1,5 +1,7 @@
 package org.szpax.plan.treningowy.model;
 
+import org.szpax.plan.persistance.DbMock;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,11 +21,9 @@ public class TrainingPlan {
      * do nich konkretne cwiczenia
      */
 
-    private static TrainingPlan trainingPlan = new TrainingPlan();
-    public static TrainingPlan getTraningPlan(){
-        return trainingPlan;
+    public static TrainingPlan create(){
+        return new TrainingPlan();
     }
-
 
     private Map<String, List<Excercise>> trainigByDays = new HashMap<>();
 
@@ -52,9 +52,8 @@ public class TrainingPlan {
     }
 
     public void addExcercise(String day, String excerciseName, Integer repeats, Integer weight) {
-        trainigByDays.get(day).add(new Excercise(excerciseName, repeats, weight));
+        trainigByDays.get(day).add(new Excercise(excerciseName, repeats, weight)); // w tym miejscu ( tam gdzie dodajemy do listy nowy element new Excercise(excerciseName....) to jest jakiś magiczny skrót do tworzenie nowego obiekty excercise, na stronie Oracla funkcja add wyglada tak : .add(E e)
     }
-
     public Map<String, List<Excercise>> getTrainingByDays() {
         return trainigByDays;
     }
@@ -62,6 +61,9 @@ public class TrainingPlan {
     // blad to robisz gdy tworzysz nowy obiekt w main-e - private Double suma = new suma;
     //blad to robisz gdy tworzysz nowy obiekt w main-e - private Integer n = new n;
 
+    public static void addUser(String name) {
+        DbMock.usersList.add( new User(name)); /// nosz kurna analogicznie do add excercise jes utworzone a nie dziala .. ;/
+    }
 
     //__________________________________________________________________________________________________________________
     //                            Metods calculate the calories for eatch day:

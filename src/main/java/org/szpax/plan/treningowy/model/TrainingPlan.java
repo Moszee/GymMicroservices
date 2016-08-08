@@ -61,10 +61,6 @@ public class TrainingPlan {
     // blad to robisz gdy tworzysz nowy obiekt w main-e - private Double suma = new suma;
     //blad to robisz gdy tworzysz nowy obiekt w main-e - private Integer n = new n;
 
-    public static void addUser(String name) {
-        DbMock.usersList.add( new User(name)); /// nosz kurna analogicznie do add excercise jes utworzone a nie dziala .. ;/
-    }
-
     //__________________________________________________________________________________________________________________
     //                            Metods calculate the calories for eatch day:
 

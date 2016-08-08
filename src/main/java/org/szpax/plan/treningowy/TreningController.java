@@ -50,14 +50,4 @@ public class TreningController {
     public Map<String, Double> caloriesInWeek() {
         return DbMock.getTraningPlan().getCaloriesByDays(); // Tu jest blad !!!!!!!! mówi że to dowoluje się do Statc a to nie jest Static
     }
-
-    @RequestMapping("user/add")
-    public static void addUser (@RequestParam String name) {
-        TrainingPlan.addUser(name); // why user list też musi być static.... musze to sobie jeszcze raz przemyśleć i poukładać ( bez tego nie chula)
-    }                                  // kurka blaszka chyba chodzi , ale nie woem poco nusialemwstawiać ta metode w TrainingPlan zamist bezpośrednio zrobić to tutaj???
-
-    @RequestMapping("user/list")
-            public static List<User> userList () {
-    return DbMock.getUsersList();
-    }
 }

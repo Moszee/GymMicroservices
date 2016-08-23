@@ -32,4 +32,5 @@ public class UsersController {
     public static List<User> userList() {
         return DbMock.getUsersList();
     }
+
 }

@@ -37,9 +37,9 @@ public class TrainingPlan {
 
     private static String[] weekDays = {PONIEDZIALEK, WTOREK, SRODA, CZWARTEK, PIATEK, SOBOTA, NIEDZIELA};
 
-    private TrainingPlan() {
+    public TrainingPlan() {
         for (String s : weekDays) {
-            trainigByDays.put(s, new ArrayList<>());
+            trainigByDays.put(s, new ArrayList<>() );
         }
     }
 

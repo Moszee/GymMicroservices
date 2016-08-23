@@ -39,6 +39,9 @@ public class TreningController {
 
 // gdzie tu jest referencja do tworzonego cwiczenia ?!?!
     }
+    @RequestMapping("add2")//nieskoczone , djuż dochodzisz!!!
+    public void putUserTraningPlan (@RequestParam String userName,@RequestParam String day,@RequestParam String name,@RequestParam Integer repeats, @RequestParam Integer weight) {
+        DbMock.UserTrainigPlan.put(userName,new TrainingPlan().addExcercise(day, name, repeats, weight);}
 
     @RequestMapping("licz")
     public Double calculate () {

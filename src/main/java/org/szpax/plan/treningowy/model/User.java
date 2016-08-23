@@ -4,12 +4,12 @@ package org.szpax.plan.treningowy.model;
  * Created by Marcin on 2016-08-02.
  */
 public class User {
-    public String name;
+    public String userName;
 
-    public User (String name) {
-        this.name=name;
+    public User (String userName) {
+        this.userName = userName;
     }
-    public String getName(){
-        return name;
+    public String getUserName(){
+        return userName;
     }
 }

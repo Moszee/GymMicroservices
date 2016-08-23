@@ -25,4 +25,7 @@ public class DbMock {
     public static List<User> getUsersList() {
         return usersList;
     }
+
+    public static Map<String,TrainingPlan> UserTrainigPlan = new HashMap<>();
+
 }

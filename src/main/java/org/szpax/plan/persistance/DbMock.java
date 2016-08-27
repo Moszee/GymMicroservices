@@ -26,6 +26,9 @@ public class DbMock {
         return usersList;
     }
 
-    public static Map<String,TrainingPlan> UserTrainigPlan = new HashMap<>();
+    public static Map<User,TrainingPlan> userTrainigPlan = new HashMap<>();
+
+    public static Map<String, User> nameUser = new HashMap<>();
+
 
 }

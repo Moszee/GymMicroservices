@@ -41,7 +41,18 @@ public class TreningController {
     }
     @RequestMapping("add2")//nieskoczone , djuż dochodzisz!!!
     public void putUserTraningPlan (@RequestParam String userName,@RequestParam String day,@RequestParam String name,@RequestParam Integer repeats, @RequestParam Integer weight) {
-        DbMock.UserTrainigPlan.put(userName,new TrainingPlan().addExcercise(day, name, repeats, weight);}
+
+        User userx = DbMock.nameUser.get(userName);
+        TrainingPlan trainingPlan = DbMock.userTrainigPlan.get(userx);
+
+        if (trainingPlan == null) {
+            DbMock.userTrainigPlan.put(userx,new TrainingPlan());
+        }
+        trainingPlan.addExcercise(day,name,repeats,weight);
+
+        //DbMock.userTrainigPlan.get(userx).addExcercise(day, name, repeats, weight);
+
+    }
 
     @RequestMapping("licz")
     public Double calculate () {

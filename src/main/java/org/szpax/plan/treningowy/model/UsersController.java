@@ -24,8 +24,10 @@ public class UsersController {
 //w du&#x17c;ych aplikacjach korzystamy z logera zamist system.out
 
     @RequestMapping("/add")
-    public static void addUser(String name) {
-        DbMock.usersList.add( new User(name));
+    public static void addUser(String userName) {
+        DbMock.usersList.add( new User(userName));
+        DbMock.nameUser.put(userName, new User(userName)); // Czy ten Obiekt klasy User to bedzie ten sam obiekt co w linice wyżej czy ja tworze dwa osobne ( ale identyczne) obiekty o klasie User???
+
     }
 
     @RequestMapping("/list")

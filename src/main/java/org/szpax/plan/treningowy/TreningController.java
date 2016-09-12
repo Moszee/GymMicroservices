@@ -46,7 +46,8 @@ public class TreningController {
         TrainingPlan trainingPlan = DbMock.userTrainigPlan.get(userx);
 
         if (trainingPlan == null) {
-            DbMock.userTrainigPlan.put(userx,new TrainingPlan());
+            TrainingPlan traningPlan = new TrainingPlan();
+            DbMock.userTrainigPlan.put(userx,trainingPlan);
         }
         trainingPlan.addExcercise(day,name,repeats,weight);
 

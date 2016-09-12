@@ -25,9 +25,8 @@ public class UsersController {
 
     @RequestMapping("/add")
     public static void addUser(String userName) {
-        DbMock.usersList.add( new User(userName));
-        DbMock.nameUser.put(userName, new User(userName)); // Czy ten Obiekt klasy User to bedzie ten sam obiekt co w linice wyżej czy ja tworze dwa osobne ( ale identyczne) obiekty o klasie User???
-
+        DbMock.nameUser.put(userName, new User(userName));
+        DbMock.usersList.add(  DbMock.nameUser.get(userName));
     }
 
     @RequestMapping("/list")

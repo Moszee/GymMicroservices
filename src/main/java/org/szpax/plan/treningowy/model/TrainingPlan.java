@@ -51,8 +51,8 @@ public class TrainingPlan {
         return mapCaloriesByDays;
     }
 
-    public void addExcercise(String day, String excerciseName, Integer repeats, Integer weight) {
-        trainigByDays.get(day).add(new Excercise(excerciseName, repeats, weight)); // w tym miejscu ( tam gdzie dodajemy do listy nowy element new Excercise(excerciseName....) to jest jakiś magiczny skrót do tworzenie nowego obiekty excercise, na stronie Oracla funkcja add wyglada tak : .add(E e)
+    public void addExcercise(String day, String name, Integer repeats, Integer weight) {
+        trainigByDays.get(day).add(new Excercise(name, repeats, weight)); // w tym miejscu ( tam gdzie dodajemy do listy nowy element new Excercise(excerciseName....) to jest jakiś magiczny skrót do tworzenie nowego obiekty excercise, na stronie Oracla funkcja add wyglada tak : .add(E e)
     }
     public Map<String, List<Excercise>> getTrainingByDays() {
         return trainigByDays;

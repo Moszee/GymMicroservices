@@ -23,6 +23,9 @@ public class UsersController {
     Logger log = Logger.getLogger(UsersController.class);// pobieramy referencje (do) logera, i podajemy klase (.class - znaczy że ta klasa) - NIEWAŻNE!
 //w du&#x17c;ych aplikacjach korzystamy z logera zamist system.out
 
+    public int n = DbMock.usersList.size();
+    private int x = 1;
+
     @RequestMapping("/add")
     public static void addUser(String userName) {
         DbMock.nameUser.put(userName, new User(userName));
@@ -34,4 +37,15 @@ public class UsersController {
         return DbMock.getUsersList();
     }
 
-}
+    @RequestMapping("/users")//to niedziala ;(
+    while(x<n){
+        public String name(){
+            DbMock.usersList.get(x);
+        }
+            private User userx = DbMock.usersList.get(x);
+        public TrainingPlan userXPlan() {
+            DbMock.userTrainigPlan.get(userx);
+        }
+
+        }
+    }

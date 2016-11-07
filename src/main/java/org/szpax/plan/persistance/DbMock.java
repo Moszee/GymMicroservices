@@ -1,9 +1,6 @@
 package org.szpax.plan.persistance;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.szpax.plan.treningowy.model.TrainingPlan;
 import org.szpax.plan.treningowy.model.User;
@@ -25,6 +22,8 @@ public class DbMock {
     public static List<User> getUsersList() {
         return usersList;
     }
+
+    public static Map<User, TrainingPlan> getUsersPlans() { return userTrainigPlan; }
 
     public static Map<User,TrainingPlan> userTrainigPlan = new HashMap<>();
 

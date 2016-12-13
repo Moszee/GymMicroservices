@@ -2,6 +2,7 @@ package org.szpax.plan.persistance;
 
 import java.util.*;
 
+import org.szpax.plan.treningowy.model.Excercise;
 import org.szpax.plan.treningowy.model.TrainingPlan;
 import org.szpax.plan.treningowy.model.User;
 
@@ -28,6 +29,8 @@ public class DbMock {
     public static Map<User,TrainingPlan> userTrainigPlan = new HashMap<>();
 
     public static Map<String, User> nameUser = new HashMap<>();
+
+    public static Map<String, Map<String,List<Excercise>>> userNameTrainingPlan = new HashMap<>();
 
 
 }

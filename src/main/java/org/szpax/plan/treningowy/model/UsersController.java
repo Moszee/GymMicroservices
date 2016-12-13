@@ -26,7 +26,6 @@ public class UsersController {
 //w du&#x17c;ych aplikacjach korzystamy z logera zamist system.out
 
     public int n = usersList.size();
-    private int x = 1;
 
     @RequestMapping("/add")
     public static void addUser(String userName) {
@@ -42,10 +41,10 @@ public class UsersController {
     @RequestMapping("users")
     public static Map<String,Map<String, List<Excercise>>> getUserPlan(){
         int m = usersList.size();//teraz m jes public czy private?
-        for (int x = 0, x < m, int x = x +1){
-            DbMock.userNameTrainingPlan.put(DbMock.usersList.get(int x).)//dlaczego DbMock.userNameTrainingPlan.put(DbMock.usersList.get(int x).getUserName...) nie zadziałą - Error ( nie wiedzdi tego getUserName) sprawdz czy userList faktycznie jest wypełniona w momencie jak odpalasz ta metode (??może z nia jest coś nie tak)
+        for (int x = 0; x < m; x = x +1){
+            DbMock.userNameTrainingPlan.put(DbMock.usersList.get( x).);//dlaczego DbMock.userNameTrainingPlan.put(DbMock.usersList.get(int x).getUserName...) nie zadziałą - Error ( nie wiedzdi tego getUserName) sprawdz czy userList faktycznie jest wypełniona w momencie jak odpalasz ta metode (??może z nia jest coś nie tak)
 
-        }
+            }
 
     }
 

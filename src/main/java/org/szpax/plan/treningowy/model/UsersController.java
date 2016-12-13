@@ -44,6 +44,7 @@ public class UsersController {
         int m = usersList.size();//teraz m jes public czy private?
         for (int x = 0, x < m, int x = x +1){
             DbMock.userNameTrainingPlan.put(DbMock.usersList.get(int x).)//dlaczego DbMock.userNameTrainingPlan.put(DbMock.usersList.get(int x).getUserName...) nie zadziałą - Error ( nie wiedzdi tego getUserName) sprawdz czy userList faktycznie jest wypełniona w momencie jak odpalasz ta metode (??może z nia jest coś nie tak)
+
         }
 
     }

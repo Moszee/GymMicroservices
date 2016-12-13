@@ -12,6 +12,8 @@ package org.szpax.plan.treningowy.model;
         import java.util.List;
         import java.util.Map;
 
+        import static org.szpax.plan.persistance.DbMock.*;
+
 /**
  * Created by Marcin on 2016-08-06.
  */
@@ -23,29 +25,28 @@ public class UsersController {
     Logger log = Logger.getLogger(UsersController.class);// pobieramy referencje (do) logera, i podajemy klase (.class - znaczy że ta klasa) - NIEWAŻNE!
 //w du&#x17c;ych aplikacjach korzystamy z logera zamist system.out
 
-    public int n = DbMock.usersList.size();
+    public int n = usersList.size();
     private int x = 1;
 
     @RequestMapping("/add")
     public static void addUser(String userName) {
-        DbMock.nameUser.put(userName, new User(userName));
-        DbMock.usersList.add(  DbMock.nameUser.get(userName));
+        nameUser.put(userName, new User(userName));
+        usersList.add(  nameUser.get(userName));
     }
 
     @RequestMapping("/list")
     public static List<User> userList() {
-        return DbMock.getUsersList();
+        return getUsersList();
     }
 
-    @RequestMapping("/users")//to niedziala ;(
-    while(x<n){
-        public String name(){
-            DbMock.usersList.get(x);
-        }
-            private User userx = DbMock.usersList.get(x);
-        public TrainingPlan userXPlan() {
-            DbMock.userTrainigPlan.get(userx);
+    @RequestMapping("users")
+    public static Map<String,Map<String, List<Excercise>>> getUserPlan(){
+        int m = usersList.size();//teraz m jes public czy private?
+        for (int x = 0, x < m, int x = x +1){
+            DbMock.userNameTrainingPlan.put(DbMock.usersList.get(int x).)//dlaczego DbMock.userNameTrainingPlan.put(DbMock.usersList.get(int x).getUserName...) nie zadziałą - Error ( nie wiedzdi tego getUserName) sprawdz czy userList faktycznie jest wypełniona w momencie jak odpalasz ta metode (??może z nia jest coś nie tak)
         }
 
-        }
     }
+
+        }
+

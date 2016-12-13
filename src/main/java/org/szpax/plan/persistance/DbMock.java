@@ -30,7 +30,7 @@ public class DbMock {
 
     public static Map<String, User> nameUser = new HashMap<>();
 
-    public static Map<String, Map<String,List<Excercise>>> userNameTrainingPlan = new HashMap<>();
+    public static Map<String, TrainingPlan> userNameTrainingPlan = new HashMap<>();
 
 
 }

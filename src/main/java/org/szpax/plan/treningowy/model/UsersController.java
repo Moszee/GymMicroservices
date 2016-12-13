@@ -39,13 +39,13 @@ public class UsersController {
     }
 
     @RequestMapping("users")
-    public static Map<String,Map<String, List<Excercise>>> getUserPlan(){
+    public static Map<String,TrainingPlan> getUserPlan() {
         int m = usersList.size();//teraz m jes public czy private?
-        for (int x = 0; x < m; x = x +1){
-            DbMock.userNameTrainingPlan.put(DbMock.usersList.get( x).);//dlaczego DbMock.userNameTrainingPlan.put(DbMock.usersList.get(int x).getUserName...) nie zadziałą - Error ( nie wiedzdi tego getUserName) sprawdz czy userList faktycznie jest wypełniona w momencie jak odpalasz ta metode (??może z nia jest coś nie tak)
+        for (int x = 0; x < m; x = x + 1) {
+            DbMock.userNameTrainingPlan.put(DbMock.usersList.get(x).getUserName(), DbMock.getTraningPlan());//dlaczego DbMock.userNameTrainingPlan.put(DbMock.usersList.get(int x).getUserName...) nie zadziałą - Error ( nie wiedzdi tego getUserName) sprawdz czy userList faktycznie jest wypełniona w momencie jak odpalasz ta metode (??może z nia jest coś nie tak)
 
-            }
-
+        }
+        return userNameTrainingPlan;
     }
 
         }

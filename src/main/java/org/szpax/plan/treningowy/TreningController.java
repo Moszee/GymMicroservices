@@ -50,6 +50,12 @@ public class TreningController {
             DbMock.userTrainigPlan.put(userx,trainingPlan);
         }
         trainingPlan.addExcercise(day,name,repeats,weight);
+        if(DbMock.nameUser.containsKey(userName)){
+
+        }
+        else{
+            System.out.println("Nie ma takiego urzytkownieka, prosze najpierw dodać urzytkownika o imieniu " + userName);
+        }
 
         //DbMock.userTrainigPlan.get(userx).addExcercise(day, name, repeats, weight);
 

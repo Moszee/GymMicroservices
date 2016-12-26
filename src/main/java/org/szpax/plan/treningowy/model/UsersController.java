@@ -35,7 +35,7 @@ public class UsersController {
 
     @RequestMapping("/list")
     public static List<User> userList() {
-        return getUsersList();
+        return DbMock.getUsersList();
     }
 
     @RequestMapping("users")
